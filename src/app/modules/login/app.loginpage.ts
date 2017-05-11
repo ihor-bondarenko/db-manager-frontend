@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthHttp, tokenNotExpired } from 'angular2-jwt';
-import {MdSnackBar} from '@angular/material';
 import { AppSnakeBarService } from '../../services/snakbar/app.snakebar.service';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -15,7 +14,7 @@ export class AppLoginComponent {
     private name;
     private password;
 
-    constructor(public authHttp: AuthHttp, public snakbar: AppSnakeBarService){
+    constructor(public authHttp: AuthHttp, public snakbar: AppSnakeBarService, private router: Router){
     }
 
     login() {
@@ -26,8 +25,9 @@ export class AppLoginComponent {
                 data => {
                     data.json().success ? this.snakbar.showSuccess(data.json().message, 'Close') : this.snakbar.showError(data.json().message, 'Close');
                     localStorage.setItem('token', data.json().token);
-                    console.log(data.json());
-                    console.log(tokenNotExpired());
+                    if(data.json().success) {
+                        this.router.navigate(['/home']);
+                    }
                 },
                 err => console.log(err),
                 () => console.log('Request Complete')
