@@ -1,4 +1,6 @@
-<h1>
-  {{title}}
-</h1>
+<md-toolbar color="primary">
+    <span><a routerLink="home" class="title-link">{{Title}}</a></span>
+  <span class="toolbar-spacer"></span>
+  <a md-mini-fab routerLink="login"><md-icon>input</md-icon></a>
+</md-toolbar>
 <router-outlet></router-outlet>

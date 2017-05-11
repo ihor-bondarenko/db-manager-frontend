@@ -2,6 +2,8 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SelectivePreloadingStrategy } from './selective-preloading-strategy';
 import { CanDeactivateGuard }       from './can-deactivate-guard.service';
+import { PageNotFoundComponent }       from './not-found.component';
+
 const appRoutes: Routes = [
     /*{
         path: 'compose',
@@ -13,13 +15,8 @@ const appRoutes: Routes = [
         loadChildren: 'app/admin/admin.module#AdminModule',
         canLoad: [AuthGuard]
     },*/
-    {
-        path: 'crisis-center',
-        loadChildren: 'app/crisis-center/crisis-center.module#CrisisCenterModule',
-        data: { preload: true }
-    },
-    { path: '',   redirectTo: '/heroes', pathMatch: 'full' },
-    //{ path: '**', component: PageNotFoundComponent }
+    { path: '',   redirectTo: '/home', pathMatch: 'full' },
+    { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

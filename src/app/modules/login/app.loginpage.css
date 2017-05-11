@@ -1,0 +1,9 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-button {
+    background-color: #63b96a;
+    color: white;
+}
