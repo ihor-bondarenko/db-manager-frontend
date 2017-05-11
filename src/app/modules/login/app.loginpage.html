@@ -5,14 +5,14 @@
     <md-card-content>
         <form class="login-form">
             <md-input-container class="example-full-width">
-                <input mdInput placeholder="Username"  name="login">
+                <input mdInput placeholder="Username"  name="login" [(ngModel)]="name">
             </md-input-container>
             <md-input-container class="example-full-width">
-                <input mdInput placeholder="Password" type="password" name="password">
+                <input mdInput placeholder="Password" type="password" name="password" [(ngModel)]="password">
             </md-input-container>
         </form>
     </md-card-content>
     <md-card-actions>
-        <button md-raised-button class="login-button">Login</button>
+        <button md-raised-button class="login-button" (click)="login()">Login</button>
     </md-card-actions>
 </md-card>

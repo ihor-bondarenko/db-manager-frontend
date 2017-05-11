@@ -13,7 +13,8 @@ import { HomeRoutingModule } from './home-routing.module';
     declarations: [
         AppHomeComponent
     ],
-    providers: [ ]
+    providers: [
+    ]
 })
 
 export class HomePageModule {}
