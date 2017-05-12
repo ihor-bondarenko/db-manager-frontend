@@ -8,6 +8,7 @@ import {MdButtonModule, MdCheckboxModule, MdToolbarModule, MdIconModule, MdInput
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
+import { AppNavbarComponent } from './modules/main/navbar/app.navbar.component';
 import { AppRoutingModule } from './app.routing.module';
 import { HomePageModule } from './modules/home/app.home.module';
 import { LoginModule } from './modules/login/app.login.module';
@@ -16,14 +17,17 @@ import { AuthModule } from './modules/auth/app.auth.module';
 
 import { AppSnakeBarService } from './services/snakbar/app.snakebar.service';
 import { AuthService } from './services/auth/app.auth.service';
+import {Ng2Webstorage} from 'ngx-webstorage';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AppNavbarComponent
   ],
   imports: [
     BrowserModule,
+    Ng2Webstorage.forRoot({ prefix: '', separator: '' }),
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,

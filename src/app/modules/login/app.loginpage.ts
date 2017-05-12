@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { AuthHttp, tokenNotExpired } from 'angular2-jwt';
-import { AppSnakeBarService } from '../../services/snakbar/app.snakebar.service';
-import { Router } from '@angular/router';
+//import { AuthHttp, tokenNotExpired } from 'angular2-jwt';
+//import { AppSnakeBarService } from '../../services/snakbar/app.snakebar.service';
+//import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth/app.auth.service';
 
 @Component({
     selector: 'app-root',
@@ -14,23 +15,13 @@ export class AppLoginComponent {
     private name;
     private password;
 
-    constructor(public authHttp: AuthHttp, public snakbar: AppSnakeBarService, private router: Router){
+    constructor(private authService: AuthService){
     }
 
     login() {
+        this.authService.login(this.name, this.password);
         //headers.append('Content-Type', 'application/json');
         //let options = new RequestOptions({ headers: headers });
-        this.authHttp.post('http://localhost:8080/api/authenticate', {name: this.name, password: this.password})
-            .subscribe(
-                data => {
-                    data.json().success ? this.snakbar.showSuccess(data.json().message, 'Close') : this.snakbar.showError(data.json().message, 'Close');
-                    localStorage.setItem('token', data.json().token);
-                    if(data.json().success) {
-                        this.router.navigate(['/home']);
-                    }
-                },
-                err => console.log(err),
-                () => console.log('Request Complete')
-            );
+
     }
 }

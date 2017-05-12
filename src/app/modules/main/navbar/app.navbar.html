@@ -1,0 +1,6 @@
+<md-toolbar color="primary">
+    <span><a routerLink="home" class="title-link">{{Title}}</a></span>
+    <span class="toolbar-spacer"></span>
+    <span>Hello {{ (user$ | async)?.name }} {{ user.name }}</span>
+    <span><button md-raised-button (click)="logout()" *ngIf="(isLoggedIn | async)" class="logout-button">Logout</button></span>
+</md-toolbar>
